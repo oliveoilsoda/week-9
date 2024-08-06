@@ -40,24 +40,23 @@ var cpuPoints = 0
 
 //The Game
 for (let i = 0; i <= 25; i++) {
-    playerCurrentCard = playerDeck.slice(-1) //Plays card from both players
-    cpuCurrentCard = cpuDeck.slice(-1)
 
     console.log("ROUND ", [i])
-    console.log("Player:", playerCurrentCard, "CPU:", cpuCurrentCard) //Round Info
+    console.log("Player:", playerDeck[0], "CPU:", cpuDeck[0]) //Round Info
 
-    if (playerCurrentCard > cpuCurrentCard) { // Player Win
+    if (playerDeck[0] > cpuDeck[0]) { // Player Win
         playerPoints +=1
         console.log("Player got a point!!! They now have", playerPoints, "Point/s.")
-    } else if (playerCurrentCard < cpuCurrentCard) { //CPU Win
+    } else if (playerDeck[0] < cpuDeck[0]) { //CPU Win
         cpuPoints +=1
         console.log("Cpu got a point!!! They now have", cpuPoints, "Point/s.")
     } else {
         console.log("Tie! No one gets a point. :(") //Tie
     }
 
-    deck.push(playerDeck.pop(1)) //Add cards back to deck
-    deck.push(cpuDeck.pop(1))
+    deck.push(playerDeck.shift())
+    deck.push(cpuDeck.shift())
+
 }
 console.log("FINAL TALLY") //Winner Info
 console.log("Player:",playerPoints,"CPU",cpuPoints)
